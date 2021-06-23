@@ -9,13 +9,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'System Cursor Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('System Cursor demo'),
+          title: Text('System Cursor Demo'),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(18),
                 child: Linkify(
-                  text: 'Source code: ',
+                  text:
+                      'Source code: https://github.com/iqfareez/system_cursor',
                   textAlign: TextAlign.center,
                   onOpen: (link) async {
                     await launch(link.url);
