@@ -1,53 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:system_cursor/cursors.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:system_cursor/app.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode themeMode = ThemeMode.light;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'System Cursor Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
+        useMaterial3: true,
       ),
+      darkTheme: ThemeData.dark().copyWith(useMaterial3: true),
+      themeMode: themeMode,
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('System Cursor Demo'),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Linkify(
-                  onOpen: (link) async {
-                    await launch(link.url);
-                  },
-                  text:
-                      'Please note that some cursors are platform specific. Please refer to https://api.flutter.dev/flutter/services/SystemMouseCursors-class.html',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
-              Cursors(),
-              Padding(
-                padding: const EdgeInsets.all(18),
-                child: Linkify(
-                  text:
-                      'Source code: https://github.com/iqfareez/system_cursor',
-                  textAlign: TextAlign.center,
-                  onOpen: (link) async {
-                    await launch(link.url);
-                  },
-                ),
-              )
-            ],
+          appBar: AppBar(
+            title: Text('System Cursor Demo'),
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                themeMode = themeMode == ThemeMode.dark
+                    ? ThemeMode.light
+                    : ThemeMode.dark;
+              });
+            },
+            child: Icon(themeMode == ThemeMode.light
+                ? Icons.light_mode
+                : Icons.dark_mode),
+          ),
+          body: App()),
+    );
+  }
+}
+
+class MyDialog extends StatelessWidget {
+  const MyDialog({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      title: Text('Select Theme'),
+      children: [
+        SimpleDialogOption(
+          child: Text('Light'),
         ),
-      ),
+        SimpleDialogOption(
+          child: Text('Dark'),
+        ),
+      ],
     );
   }
 }

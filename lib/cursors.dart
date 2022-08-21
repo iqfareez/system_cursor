@@ -105,8 +105,6 @@ class _CursorsState extends State<Cursors> {
       physics: NeverScrollableScrollPhysics(),
       itemCount: _cursors.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        mainAxisSpacing: 5,
-        crossAxisSpacing: 5,
         crossAxisCount: crossAxisCount(),
       ),
       itemBuilder: (context, index) {
@@ -125,9 +123,13 @@ class _CursorsState extends State<Cursors> {
                   SizedBox(
                     height: 5,
                   ),
-                  Text(
-                    _cursors.values.elementAt(index),
-                    style: TextStyle(color: Colors.black54),
+                  Flexible(
+                    child: Opacity(
+                      opacity: .8,
+                      child: Text(
+                        _cursors.values.elementAt(index),
+                      ),
+                    ),
                   ),
                 ],
               ),
