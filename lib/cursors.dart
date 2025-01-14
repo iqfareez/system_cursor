@@ -5,11 +5,11 @@ class Cursors extends StatefulWidget {
   const Cursors({Key? key}) : super(key: key);
 
   @override
-  _CursorsState createState() => _CursorsState();
+  State<Cursors> createState() => _CursorsState();
 }
 
 class _CursorsState extends State<Cursors> {
-  Map<SystemMouseCursor, String> _cursors = {
+  final Map<SystemMouseCursor, String> _cursors = {
     SystemMouseCursors.alias:
         'A cursor indicating that the current operation will create an alias of, or a shortcut of the item.\n\nTypically the shape of an arrow with a shortcut icon at the corner.',
     SystemMouseCursors.allScroll:

@@ -4,6 +4,8 @@ import 'package:system_cursor/app.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -17,9 +19,8 @@ class _MyAppState extends State<MyApp> {
       title: 'System Cursor Demo',
       theme: ThemeData(
         primarySwatch: Colors.green,
-        useMaterial3: true,
       ),
-      darkTheme: ThemeData.dark().copyWith(useMaterial3: true),
+      darkTheme: ThemeData.dark(),
       themeMode: themeMode,
       home: Scaffold(
           appBar: AppBar(

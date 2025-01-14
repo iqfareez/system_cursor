@@ -3,7 +3,6 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'cursors.dart';
-import 'main.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
